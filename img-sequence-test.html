@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-	
-<div style="text-align:center">
-<button id="btnStart" onclick="runImgSequence()" title="Continuous random number of frames">GO</button> |
-<button id="btnStart" onclick="runImgSequence(33.33333)">33ms</button>
+
+<div style="text-align:center; margin:auto">
+<button id="btnStart" onclick="runImgSequence(33.33333)" title="Continuous random number of frames">Start Test </button>
+<!-- <button id="btnStart" onclick="runImgSequence(33.33333)">33ms</button>
 <button id="btnStart" onclick="runImgSequence(66.66667)">67ms</button>
 <button id="btnStart" onclick="runImgSequence(100)">100ms</button>
 <button id="btnStart" onclick="runImgSequence(266.6667)">267ms</button>
-<button id="btnStart" onclick="runImgSequence(500)">500ms</button>
-<div>
-<br/>
+<button id="btnStart" onclick="runImgSequence(500)">500ms</button> -->
+</div>
+<div style="display:none"><br/>
 Showing face for <input id="txtDuration" type="text" style="width:36px; text-align:right;" disabled /> ms 
 in <input id="txtFrames" type="text" style="width:24px; text-align:right;" disabled /> frames
 @ <input id="txtFps" type="text" style="width:24px; text-align:right;" disabled /> fps
@@ -19,7 +19,7 @@ in <input id="txtFrames" type="text" style="width:24px; text-align:right;" disab
 <canvas id="imgCanvas"></canvas>
 
 <div id="questionEmotion" style="display:none">
-<br/><br/>
+<!-- br/><br/>
 Which emotion?
 <style>
 input,label { cursor:pointer; }
@@ -35,10 +35,10 @@ input,label { cursor:pointer; }
 <td><input type="radio" id="disgusted" name="emotion" value="disgusted"><label for="disgusted">Disgusted</label></td>
 <td><input type="radio" id="angry" name="emotion" value="angry"><label for="angry">Angry</label></td>
 </tr>
-</table>
+</table> -->
 </div>
 
-</div>
+
 
 <script src="https://unpkg.com/fps-emitter/dist/fps-emitter.min.js"></script>
 <script>
@@ -56,13 +56,13 @@ const canvasBuffers = [
 // pre-load image
 const imgFace = document.createElement('img');
 let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
+// let imgFaceUrl = 'https://github.com/wencanz/humanLikeFacePrivacy/blob/main/train/158_03_02_050_03.png?raw=true'
 imgFace.src = imgFaceUrl;
 
 const questionEmotion = document.getElementById('questionEmotion');
 
 const txtDuration = document.getElementById('txtDuration');    
 const txtFrames = document.getElementById('txtFrames');
- 
 const txtFps = document.getElementById('txtFps');   
 
 // get FPS of browser
@@ -75,7 +75,6 @@ fpsEmitter.on('update', function(newFps) {
 });
 
 // TODO: make size in terms of inches
-
 function runImgSequence(imgFaceDuration) {
     const len = 500
 	const crossLen = 50
@@ -85,6 +84,7 @@ function runImgSequence(imgFaceDuration) {
     }
 	imgFaceDurationFrames = imgFaceDuration * fps/1000;
 	//console.log('imgFaceDurationFrames', imgFaceDurationFrames);
+
 	imgFaceDurationFrames = imgFaceDurationFrames.toFixed(0);
     txtDuration.value = imgFaceDuration.toFixed(1);
 	txtFrames.value = imgFaceDurationFrames;
@@ -158,6 +158,7 @@ function runImgSequence(imgFaceDuration) {
 		imgFaceDurationFrames,
 		(6/60 * fps).toFixed(0), // 6 frames @60Hz, 100ms
 	];
+	console.log(durationFrames);
 	
 	let step = -1;	
 	let frames = 0;
@@ -202,6 +203,7 @@ function runImgSequence(imgFaceDuration) {
 		else { 
         	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
         	questionEmotion.style.display = 'block';
+        	parent.postMessage("End of Survey", "https://raw.githack.com/wencanz/FaceSketch/main/img-sequence-test.html");
 		}
 	}	
 	window.requestAnimationFrame(rafImgFocus);

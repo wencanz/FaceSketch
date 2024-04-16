@@ -70,7 +70,7 @@ input,label { cursor:pointer; }
 
 <script src="https://unpkg.com/fps-emitter/dist/fps-emitter.min.js"></script>
 <script>
-// Function to parse query parameters from URL
+/*// Function to parse query parameters from URL
 function getQueryParam(name) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -79,7 +79,7 @@ function getQueryParam(name) {
 // Get the value of the 'variable' query parameter
 var facePath = getQueryParam('variable');
 console.log("facePath:", facePath);
-	
+*/	
 // implement fully with canvas rendering, since redrawing canvas is more performant than DOM manipulation (hide/display elements)
 const canvas = document.getElementById('imgCanvas');
 const ctx = canvas.getContext('2d');

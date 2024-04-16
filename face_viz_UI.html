@@ -110,12 +110,12 @@ const fpsEmitter = new FpsEmitter();
 let fps = fpsEmitter.get();
 fpsEmitter.on('update', function(newFps) {
 	fps = newFps;
-    txtFps.value = fps;
+  txtFps.value = fps;
 });
 
 // TODO: make size in terms of inches
 function runImgSequence(imgFaceDuration) {
-    const len = 500
+  const len = 500
 	const crossLen = 50
 
     if (typeof(imgFaceDuration) == 'undefined') {
@@ -125,12 +125,12 @@ function runImgSequence(imgFaceDuration) {
 	//console.log('imgFaceDurationFrames', imgFaceDurationFrames);
 
 	imgFaceDurationFrames = imgFaceDurationFrames.toFixed(0);
-    txtDuration.value = imgFaceDuration.toFixed(1);
+  txtDuration.value = imgFaceDuration.toFixed(1);
 	txtFrames.value = imgFaceDurationFrames;
     
 	// imgCanvas.style.display = 'inline';
 	canvas.style.display = 'inline';
-    questionEmotion.style.display = 'none';
+  questionEmotion.style.display = 'none';
     
 	canvas.width = len;
 	canvas.height = len;
@@ -140,8 +140,8 @@ function runImgSequence(imgFaceDuration) {
 	});
 
 	function drawImgFocus(canvas) {
-    	w = crossLen;
-        h = crossLen
+  	w = crossLen;
+    h = crossLen
 		const ctx = canvas.getContext('2d');
 		
 		// Draw horizontal line (cross)
@@ -182,7 +182,7 @@ function runImgSequence(imgFaceDuration) {
 	function drawImgFace(canvas) {
 		const ctx = canvas.getContext('2d');
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(imgFace, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(imgFace, 0, 0, canvas.width, canvas.height);
 	}
 	//drawImgFace();
 	
@@ -241,9 +241,9 @@ function runImgSequence(imgFaceDuration) {
 		}
 		if (++frames <= durationFrames[step]) { window.requestAnimationFrame(rafImgDistractor2); }
 		else { 
-        	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
-        	questionEmotion.style.display = 'block';
-        	window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
+    	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
+    	questionEmotion.style.display = 'block';
+    	window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
 		}
 	}	
 	window.requestAnimationFrame(rafImgFocus);

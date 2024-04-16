@@ -70,7 +70,16 @@ input,label { cursor:pointer; }
 
 <script src="https://unpkg.com/fps-emitter/dist/fps-emitter.min.js"></script>
 <script>
-
+// Function to parse query parameters from URL
+function getQueryParam(name) {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    return urlParams.get(name);
+}
+// Get the value of the 'variable' query parameter
+var facePathValue = getQueryParam('facePath');
+console.log("facePath:", facePath);
+	
 // implement fully with canvas rendering, since redrawing canvas is more performant than DOM manipulation (hide/display elements)
 const canvas = document.getElementById('imgCanvas');
 const ctx = canvas.getContext('2d');
@@ -83,7 +92,8 @@ const canvasBuffers = [
 
 // pre-load image
 const imgFace = document.createElement('img');
-let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
+let imgFaceUrl = facePath;
+// let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
 // let imgFaceUrl = 'https://github.com/wencanz/humanLikeFacePrivacy/blob/main/train/158_03_02_050_03.png?raw=true'
 imgFace.src = imgFaceUrl;
 

@@ -90,10 +90,11 @@ function getQueryParam(name) {
   return urlParams.get(name);
 }
 // Get the value of the 'variable' query parameter
-let faceFile = getQueryParam('variable').split('/');
-console.log("faceFile:", faceFile);
-let condition = faceFile[0];
-let instance = faceFile[1];
+// let faceFile = getQueryParam('variable').split('/');
+let explanation = getQueryParam('explanation').split('/');
+let instance = getQueryParam('instance').split('/');
+console.log("explanation:", explanation);
+console.log("instance:", instance);
 let imgFaceUrl = 'https://github.com/wencanz/FaceSketch/blob/main/' + condition + '/' + instance + '?raw=true';
 // let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
 // let imgFaceUrl = 'https://github.com/wencanz/FaceSketch/blob/main/original_images/F001_T1_2561_face.jpg?raw=true';

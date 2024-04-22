@@ -113,7 +113,6 @@ fpsEmitter.on('update', function(newFps) {
 	fps = newFps;
   txtFps.value = fps;
 });
-let messageSent = false;
 
 // TODO: make size in terms of inches
 function runImgSequence(imgFaceDuration) {
@@ -247,12 +246,8 @@ function runImgSequence(imgFaceDuration) {
 		else { 
     	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
     	questionEmotion.style.display = 'block';
-    	// window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
+    	window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
 		}
-		if (!messageSent) {
-      window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
-      messageSent = true; // Set flag to true indicating message has been sent
-    }
 	}	
 	window.requestAnimationFrame(rafImgFocus);
 	

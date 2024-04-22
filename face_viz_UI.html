@@ -93,12 +93,6 @@ function getQueryParam(name) {
 // let faceFile = getQueryParam('variable').split('/');
 var explanation = getQueryParam('explanation');
 var instance = getQueryParam('instance');
-console.log("explanation:", explanation);
-console.log("instance:", instance);
-var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + explanation + '/' + instance;
-// let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
-// let imgFaceUrl = 'https://github.com/wencanz/FaceSketch/blob/main/original_images/F001_T1_2561_face.jpg?raw=true';
-imgFace.src = imgFaceUrl;
 
 const questionEmotion = document.getElementById('questionEmotion');
 const txtDuration = document.getElementById('txtDuration');    
@@ -109,16 +103,25 @@ const txtFps = document.getElementById('txtFps');
 const FpsEmitter = window.FpsEmitter;
 const fpsEmitter = new FpsEmitter();
 let fps = fpsEmitter.get();
-console.log('fps:', fps);
+
 fpsEmitter.on('update', function(newFps) {
 	fps = newFps;
   txtFps.value = fps;
+  
 });
 
 // TODO: make size in terms of inches
 function runImgSequence(imgFaceDuration) {
   const len = 500
 	const crossLen = 50
+
+	console.log('fps:', fps);
+	console.log("explanation:", explanation);
+	console.log("instance:", instance);
+	var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + explanation + '/' + instance;
+	// let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
+	// let imgFaceUrl = 'https://github.com/wencanz/FaceSketch/blob/main/original_images/F001_T1_2561_face.jpg?raw=true';
+	imgFace.src = imgFaceUrl;
 
   if (typeof(imgFaceDuration) == 'undefined') {
 		imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms

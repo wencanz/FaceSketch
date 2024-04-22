@@ -240,11 +240,14 @@ function runImgSequence(imgFaceDuration) {
 			frames = 0;
 			step++;
 		}
-		if (++frames <= durationFrames[step]) { window.requestAnimationFrame(rafImgDistractor2); }
+		if (++frames <= durationFrames[step]) { 
+			window.requestAnimationFrame(rafImgDistractor2); 
+			window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
+		}
 		else { 
     	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
     	questionEmotion.style.display = 'block';
-    	window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
+    	// window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
 		}
 	}	
 	window.requestAnimationFrame(rafImgFocus);

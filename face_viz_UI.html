@@ -111,13 +111,16 @@ let fps = fpsEmitter.get();
 fpsEmitter.on('update', function(newFps) {
 	fps = newFps;
   txtFps.value = fps;
-  
 });
 
 // TODO: make size in terms of inches
 function runImgSequence(imgFaceDuration) {
   const len = 500
 	const crossLen = 50
+
+	if (fps == 0){
+		fps = fpsEmitter.get();
+	}
 
 	console.log('fps:', fps);
 	console.log("explanation:", explanation);

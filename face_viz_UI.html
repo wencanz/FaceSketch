@@ -109,6 +109,7 @@ const txtFps = document.getElementById('txtFps');
 const FpsEmitter = window.FpsEmitter;
 const fpsEmitter = new FpsEmitter();
 let fps = fpsEmitter.get();
+console.log('fps:', fps);
 fpsEmitter.on('update', function(newFps) {
 	fps = newFps;
   txtFps.value = fps;
@@ -119,9 +120,9 @@ function runImgSequence(imgFaceDuration) {
   const len = 500
 	const crossLen = 50
 
-    if (typeof(imgFaceDuration) == 'undefined') {
+  if (typeof(imgFaceDuration) == 'undefined') {
 		imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms
-    }
+  }
 	imgFaceDurationFrames = imgFaceDuration * fps/1000;
 	//console.log('imgFaceDurationFrames', imgFaceDurationFrames);
 

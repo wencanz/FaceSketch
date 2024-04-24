@@ -93,6 +93,7 @@ function getQueryParam(name) {
 // let faceFile = getQueryParam('variable').split('/');
 var explanation = getQueryParam('explanation');
 var instance = getQueryParam('instance');
+var fps = getQueryParam('fps');
 var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + explanation + '/' + instance;
 // let imgFaceUrl = 'https://img.freepik.com/premium-vector/one-line-drawing-asian-grumpy-face-view-emotion-people-man-art-drawing-line_255544-1971.jpg?w=500';
 // let imgFaceUrl = 'https://github.com/wencanz/FaceSketch/blob/main/original_images/F001_T1_2561_face.jpg?raw=true';
@@ -101,17 +102,17 @@ imgFace.src = imgFaceUrl;
 const questionEmotion = document.getElementById('questionEmotion');
 const txtDuration = document.getElementById('txtDuration');    
 const txtFrames = document.getElementById('txtFrames');
-const txtFps = document.getElementById('txtFps');   
+// const txtFps = document.getElementById('txtFps');   
 
-// get FPS of browser
-const FpsEmitter = window.FpsEmitter;
-const fpsEmitter = new FpsEmitter();
-let fps = fpsEmitter.get();
+// // get FPS of browser
+// const FpsEmitter = window.FpsEmitter;
+// const fpsEmitter = new FpsEmitter();
+// let fps = fpsEmitter.get();
 
-fpsEmitter.on('update', function(newFps) {
-	fps = newFps;
-  txtFps.value = fps;
-});
+// fpsEmitter.on('update', function(newFps) {
+// 	fps = newFps;
+//   txtFps.value = fps;
+// });
 
 // TODO: make size in terms of inches
 function runImgSequence(imgFaceDuration) {

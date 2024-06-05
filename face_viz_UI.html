@@ -36,7 +36,7 @@
 <body>
 
 <div style="text-align:center; margin:auto">
-<button id="btnStart" onclick="runImgSequence(33.33333)" title="Continuous random number of frames">Click to show </button>
+<button id="btnStart" onclick="runImgSequence()" title="Continuous random number of frames">Click to show </button>
 <!-- <button id="btnStart" onclick="runImgSequence(33.33333)">33ms</button>
 <button id="btnStart" onclick="runImgSequence(66.66667)">67ms</button>
 <button id="btnStart" onclick="runImgSequence(100)">100ms</button>
@@ -99,6 +99,7 @@ function getQueryParam(name) {
 // let faceFile = getQueryParam('variable').split('/');
 var explanation = getQueryParam('explanation');
 var instance = getQueryParam('instance');
+var durationQualtrics = getQueryParam('duration');
 var fps = getQueryParam('fps');
 // var fps = 60;
 var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + explanation + '/' + instance;
@@ -131,7 +132,8 @@ function runImgSequence(imgFaceDuration) {
 	console.log("instance:", instance);
 
   if (typeof(imgFaceDuration) == 'undefined') {
-		imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms
+		//imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms
+		imgFaceDuration = durationQualtrics
   }
 	imgFaceDurationFrames = imgFaceDuration * fps/1000;
 	//console.log('imgFaceDurationFrames', imgFaceDurationFrames);

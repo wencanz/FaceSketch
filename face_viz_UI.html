@@ -108,7 +108,7 @@ var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + 
 // let imgFaceUrl = 'https://raw.githubusercontent.com//wencanz/FaceSketch/main/photo/F001_T1_2561_face.jpg';
 imgFace.src = imgFaceUrl;
 
-const questionEmotion = document.getElementById('questionEmotion');
+// const questionEmotion = document.getElementById('questionEmotion');
 const txtDuration = document.getElementById('txtDuration');    
 const txtFrames = document.getElementById('txtFrames');
 // const txtFps = document.getElementById('txtFps');   
@@ -147,7 +147,7 @@ function runImgSequence(imgFaceDuration) {
     
 	// imgCanvas.style.display = 'inline';
 	canvas.style.display = 'inline';
-  questionEmotion.style.display = 'none';
+  // questionEmotion.style.display = 'none';
     
 	canvas.width = len;
 	canvas.height = len;
@@ -269,7 +269,7 @@ function runImgSequence(imgFaceDuration) {
 		}
 		else { 
     	imgCanvas.style.display = 'none'; // aggressively stops 1 frame early, so use <= for condition in if
-    	questionEmotion.style.display = 'block';
+    	// questionEmotion.style.display = 'block';
     	window.parent.postMessage("image_displayed:" + imgFaceDuration, '*');
 		}
 	}	

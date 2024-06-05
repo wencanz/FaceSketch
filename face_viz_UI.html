@@ -99,7 +99,7 @@ function getQueryParam(name) {
 // let faceFile = getQueryParam('variable').split('/');
 var explanation = getQueryParam('explanation');
 var instance = getQueryParam('instance');
-var durationQualtrics = getQueryParam('duration');
+var durationQualtrics = parseFloat(getQueryParam('duration'));
 var fps = getQueryParam('fps');
 // var fps = 60;
 var imgFaceUrl = 'https://raw.githubusercontent.com/wencanz/FaceSketch/main/' + explanation + '/' + instance;
@@ -129,7 +129,7 @@ function runImgSequence(imgFaceDuration) {
 
   if (typeof(imgFaceDuration) == 'undefined') {
 		//imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms
-		imgFaceDuration = Number(durationQualtrics);
+		imgFaceDuration = durationQualtrics;
   }
 
 	console.log('durationQualtrics', durationQualtrics);

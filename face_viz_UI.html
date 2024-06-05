@@ -129,7 +129,7 @@ function runImgSequence(imgFaceDuration) {
 
   if (typeof(imgFaceDuration) == 'undefined') {
 		//imgFaceDuration = 2 * ( 1 + Math.floor(15 * Math.random()) ) * 1000/60; // random duration between 33.33ms and 500ms
-		imgFaceDuration = durationQualtrics
+		imgFaceDuration = Number(durationQualtrics);
   }
 
 	console.log('durationQualtrics', durationQualtrics);
